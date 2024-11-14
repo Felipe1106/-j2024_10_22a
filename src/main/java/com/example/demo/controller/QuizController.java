@@ -37,19 +37,19 @@ public class QuizController {
         Question currentQuestion = questions.get(questionIndex);
 
         if (currentQuestion.getAnswer().equalsIgnoreCase(answer.trim())) {
-            score++; // Correct answer increases score
+            score++; 
         }
 
-        questionIndex++; // Move to the next question
+        questionIndex++; 
         model.addAttribute("score", score);
         model.addAttribute("questionIndex", questionIndex);
 
         if (questionIndex < questions.size()) {
             model.addAttribute("question", questions.get(questionIndex));
-            return "quiz"; // Return to the same view with the updated data
+            return "quiz"; 
         } else {
             model.addAttribute("finalScore", score);
-            return "redirect:/quizResult"; // Redirect to the results page when the quiz is over
+            return "redirect:/quizResult"; 
         }
     }
 
@@ -58,13 +58,13 @@ public class QuizController {
         // Retrieve score from session
         Integer finalScore = (Integer) model.getAttribute("score");
         if (finalScore == null) {
-            return "error"; // If no score exists, something went wrong, show error page
+            return "error"; 
         }
 
-        // Complete the session (reset session attributes)
+        
         sessionStatus.setComplete();
         
-        // Set final score in the model for display on quizResult page
+        
         model.addAttribute("finalScore", finalScore);
         model.addAttribute("questionsSize", questions.size());
 
@@ -74,7 +74,7 @@ public class QuizController {
 
 }
 
-// Simple Question class for holding question and answer
+
 class Question {
     private String question;
     private String answer;
