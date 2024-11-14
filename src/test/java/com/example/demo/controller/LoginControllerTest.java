@@ -27,6 +27,6 @@ class LoginControllerTest {
     void whenBadPassword_thenRedirectToBadPasswordPage() throws Exception {
         mockMvc.perform(post("/login").param("password", "weak"))
                .andExpect(status().is3xxRedirection())
-               .andExpect(redirectedUrl("/bad-password"));
+               .andExpect(redirectedUrl("/badpassword"));
     }
 }
