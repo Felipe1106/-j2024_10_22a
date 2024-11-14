@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <style>
+        /* Full-page styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Login container styling */
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 3rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* Heading styling */
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Form labels */
+        label {
+            display: block;
+            text-align: left;
+            font-size: 0.9rem;
+            margin: 1rem 0 0.3rem;
+        }
+
+        /* Input fields */
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Submit button styling */
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #e50914;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #f40612;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #e87c03;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Link styling */
+        .help-text {
+            font-size: 0.9rem;
+            color: #b3b3b3;
+            margin-top: 1rem;
+        }
+
+        .help-text a {
+            color: #b3b3b3;
+            text-decoration: none;
+        }
+
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Sign In</h1>
+        <form action="/login" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p>
+        </div>
+
+    </div>
+</body>
+</html>
