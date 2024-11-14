@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .quiz-container {
+            text-align: center;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .score {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="quiz-container">
+    <h2>Quiz</h2>
+    <p th:text="'Score: ' + ${score} + '/' + ${questionIndex}"></p>
+    
+    <form action="/submitAnswer" method="post">
+        <input type="hidden" name="questionIndex" th:value="${questionIndex}" />
+        <input type="hidden" name="score" th:value="${score}" />
+
+        <div>
+            <p th:text="${question.question}"></p>
+            <label for="answer">Your Answer:</label>
+            <input type="text" id="answer" name="answer" required />
+        </div>
+        
+        <button type="submit">Submit Answer</button>
+    </form>
+</div>
+</body>
+</html>
